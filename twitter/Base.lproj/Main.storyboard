@@ -205,13 +205,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cC-cb-LRv">
-                                <rect key="frame" x="10" y="19" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,9 +216,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="fi6-0x-BEG">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fi6-0x-BEG">
                             <connections>
                                 <action selector="didTapLogout:" destination="Lbl-k5-U4i" id="gmb-V1-R4K"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="pIN-kK-maV">
+                            <connections>
+                                <segue destination="jK1-RO-rXU" kind="presentation" id="PLm-Hp-0eE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -242,7 +240,7 @@
             <objects>
                 <viewController id="sxk-5I-Xps" customClass="ComposeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TUk-yd-Ldi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-eY-Plw">
@@ -259,8 +257,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="vyd-F2-eCb">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="8r5-BM-BOg"/>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="Db4-cM-G3W"/>
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="8r5-BM-BOg">
+                            <connections>
+                                <action selector="close:" destination="sxk-5I-Xps" id="LX5-6r-ER5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="Db4-cM-G3W">
+                            <connections>
+                                <action selector="tweet:" destination="sxk-5I-Xps" id="zob-hc-jQa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="textView" destination="uUg-eY-Plw" id="dkr-tu-xFr"/>
@@ -294,7 +300,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jK1-RO-rXU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nrB-2B-opZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -309,6 +315,7 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>

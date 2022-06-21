@@ -19,6 +19,13 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)close:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (IBAction)tweet:(id)sender {
+}
+
 /*
 #pragma mark - Navigation
 
