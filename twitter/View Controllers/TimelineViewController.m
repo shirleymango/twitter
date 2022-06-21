@@ -106,10 +106,10 @@
                 NSLog(@"%d", tweet.favoriteCount);
             }
             [self.tableView reloadData];
-            [refreshControl endRefreshing];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [refreshControl endRefreshing];
     }];
 }
 
