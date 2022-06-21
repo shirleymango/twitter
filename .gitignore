@@ -67,4 +67,6 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
+**/Keys.plist
+twitter/Keys.plist
 Keys.plist
