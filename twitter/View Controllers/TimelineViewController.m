@@ -78,6 +78,7 @@
     cell.username.text = tweet.user.name;
     [cell.retweetCount setText:[NSString stringWithFormat:@"%d", tweet.retweetCount]];
     [cell.favoriteCount setText:[NSString stringWithFormat:@"%d", tweet.favoriteCount]];
+    [cell.profilePic setImageWithURL:url];
     
     return cell;
 }
