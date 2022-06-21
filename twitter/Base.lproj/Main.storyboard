@@ -92,10 +92,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSc-w5-xdR">
-                                                    <rect key="frame" x="90" y="10" width="82" height="21"/>
+                                                    <rect key="frame" x="90" y="10" width="80" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Q50-LL-tOy"/>
-                                                        <constraint firstAttribute="width" constant="82" id="wmM-31-0I9"/>
+                                                        <constraint firstAttribute="width" constant="80" id="dng-k7-mPD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -133,10 +133,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlh-6c-4jL">
-                                                    <rect key="frame" x="209" y="11" width="156" height="21"/>
+                                                    <rect key="frame" x="172" y="11" width="190" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ISv-Ft-atK"/>
-                                                        <constraint firstAttribute="width" constant="156" id="pjs-36-Mto"/>
+                                                        <constraint firstAttribute="width" constant="190" id="pjs-36-Mto"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -177,7 +177,7 @@
                                                 <constraint firstItem="Mlh-6c-4jL" firstAttribute="top" secondItem="cW7-kd-nJ6" secondAttribute="top" constant="11" id="JHj-Fd-yCG"/>
                                                 <constraint firstItem="xSc-w5-xdR" firstAttribute="top" secondItem="cW7-kd-nJ6" secondAttribute="top" constant="10" id="NEm-2Y-Gdn"/>
                                                 <constraint firstItem="7JI-H7-Bxl" firstAttribute="top" secondItem="SF6-j6-02R" secondAttribute="bottom" constant="10" id="P6j-Zu-yvh"/>
-                                                <constraint firstItem="Mlh-6c-4jL" firstAttribute="leading" secondItem="xSc-w5-xdR" secondAttribute="trailing" constant="37" id="Slt-2R-F15"/>
+                                                <constraint firstItem="Mlh-6c-4jL" firstAttribute="leading" secondItem="xSc-w5-xdR" secondAttribute="trailing" constant="2" id="Slt-2R-F15"/>
                                                 <constraint firstItem="JZq-XE-h21" firstAttribute="top" secondItem="SF6-j6-02R" secondAttribute="bottom" constant="16" id="UcL-69-PJK"/>
                                                 <constraint firstItem="7JI-H7-Bxl" firstAttribute="leading" secondItem="JZq-XE-h21" secondAttribute="trailing" constant="31" id="YAf-Jc-UMf"/>
                                                 <constraint firstItem="1qO-gr-aLO" firstAttribute="leading" secondItem="RIX-5H-RE7" secondAttribute="trailing" constant="28" id="YqK-Hs-cbo"/>

@@ -79,7 +79,10 @@
     [cell.retweetCount setText:[NSString stringWithFormat:@"%d", tweet.retweetCount]];
     [cell.favoriteCount setText:[NSString stringWithFormat:@"%d", tweet.favoriteCount]];
     [cell.profilePic setImageWithURL:url];
-    
+    NSString *at = @"@";
+    NSString *username = tweet.user.screenName;
+    NSString *date = tweet.createdAtString;
+    cell.usernameAndDate.text = [NSString stringWithFormat:@"%@%@ • %@", at, username, date];
     return cell;
 }
 
