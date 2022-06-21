@@ -10,8 +10,13 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetCell.h"
+#import "Tweet.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController () <UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 - (IBAction)didTapLogout:(id)sender;
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
@@ -21,21 +26,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.dataSource = self;
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
+            self.arrayOfTweets = (NSMutableArray*) tweets;
+            for (Tweet *tweet in tweets) {
+                NSLog(@"%d", tweet.favoriteCount);
+//                [self.arrayOfTweets addObject:tweet];
             }
-            self.arrayOfTweets = tweets;
+            [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-    [[APIManager shared] logout];
+//    [[APIManager shared] logout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,4 +67,23 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
 }
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tweetCell"];
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+//    cell.profilePic = [UIImage imageWithData:urlData];
+    cell.tweet.text = tweet.text;
+    cell.username.text = tweet.user.name;
+    [cell.retweetCount setText:[NSString stringWithFormat:@"%d", tweet.retweetCount]];
+    [cell.favoriteCount setText:[NSString stringWithFormat:@"%d", tweet.favoriteCount]];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
 @end
