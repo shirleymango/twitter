@@ -79,19 +79,20 @@
 }
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tweetCell"];
-    Tweet *tweet = self.arrayOfTweets[indexPath.row];
-    NSString *URLString = tweet.user.profilePicture;
+    Tweet *currentTweet = self.arrayOfTweets[indexPath.row];
+    cell.tweet = currentTweet;
+    NSString *URLString = currentTweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
 //    cell.profilePic = [UIImage imageWithData:urlData];
-    cell.tweet.text = tweet.text;
-    cell.username.text = tweet.user.name;
-    [cell.retweetCount setText:[NSString stringWithFormat:@"%d", tweet.retweetCount]];
-    [cell.favoriteCount setText:[NSString stringWithFormat:@"%d", tweet.favoriteCount]];
+    cell.tweetText.text = currentTweet.text;
+    cell.username.text = currentTweet.user.name;
+    [cell.retweetCount setText:[NSString stringWithFormat:@"%d", currentTweet.retweetCount]];
+    [cell.favoriteCount setText:[NSString stringWithFormat:@"%d", currentTweet.favoriteCount]];
     [cell.profilePic setImageWithURL:url];
     NSString *at = @"@";
-    NSString *username = tweet.user.screenName;
-    NSString *date = tweet.createdAtString;
+    NSString *username = currentTweet.user.screenName;
+    NSString *date = currentTweet.createdAtString;
     cell.usernameAndDate.text = [NSString stringWithFormat:@"%@%@ • %@", at, username, date];
     return cell;
 }

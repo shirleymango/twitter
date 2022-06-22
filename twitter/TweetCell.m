@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "Tweet.h"
 
 @implementation TweetCell
 
@@ -19,6 +20,19 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)didTapFavorite:(id)sender {
+    // Update the local tweet model
+    self.tweet.favorited = YES;
+    self.tweet.favoriteCount += 1;
+    // Update cell UI
+    [self refreshData];
+    // TODO: Send a POST request to the POST favorites/create endpoint
+}
+
+- (void)refreshData{
+    [self.favoriteCount setText:[NSString stringWithFormat:@"%d", self.tweet.favoriteCount]];
 }
 
 @end
