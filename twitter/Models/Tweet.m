@@ -40,15 +40,15 @@
         // Configure the input format to parse the date string
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
         // Convert String to Date
-        NSDate *date = [formatter dateFromString:createdAtOriginalString];
+        self.date = [formatter dateFromString:createdAtOriginalString];
         // Configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterNoStyle;
+        formatter.timeStyle = NSDateFormatterShortStyle;
         // Convert Date to String
 //        self.createdAtString = [formatter stringFromDate:date];
         
         // Format date to be time ago since now
-        self.createdAtString = date.shortTimeAgoSinceNow;
+        self.createdAtString = self.date.shortTimeAgoSinceNow;
     }
     return self;
 }

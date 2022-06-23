@@ -14,6 +14,7 @@
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,6 +25,22 @@
 @end
 
 @implementation TimelineViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    // Get timeline
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            self.arrayOfTweets = (NSMutableArray*) tweets;
+            for (Tweet *tweet in tweets) {
+                NSLog(@"%d", tweet.favoriteCount);
+            }
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,9 +80,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UINavigationController *navigationController = [segue destinationViewController];
+    if([segue.identifier isEqualToString:@"TweetCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"TweetDetails"]) {
+        DetailsViewController *detailVC = [segue destinationViewController];
+        // Pass the selected object to the new view controller.
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        detailVC.detailsTweet = self.arrayOfTweets[indexPath.row];
+    }
 }
 
 
@@ -92,8 +117,18 @@
     [cell.profilePic setImageWithURL:url];
     NSString *at = @"@";
     NSString *username = currentTweet.user.screenName;
-    NSString *date = currentTweet.createdAtString;
+    NSString *date = currentTweet.date.shortTimeAgoSinceNow;
     cell.usernameAndDate.text = [NSString stringWithFormat:@"%@%@ • %@", at, username, date];
+    
+    // heart button should be red if liked
+    if (currentTweet.favorited == YES) {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    }
+    
+    // retweet button is colored if retweeted
+    if (currentTweet.retweeted == YES) {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    }
     return cell;
 }
 
