@@ -30,21 +30,31 @@
     [self.detailsProfilePic setImageWithURL:url];
     
     // date
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    // Configure the input format to parse the date string
-    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    // Convert String to Date
+    NSDateFormatter *formatterTime = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatterDate = [[NSDateFormatter alloc] init];
     // Configure output format
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
+    formatterTime.timeStyle = NSDateFormatterShortStyle;
+    formatterDate.dateStyle = NSDateFormatterShortStyle;
     // Convert Date to String
-    self.detailsDate.text = [formatter stringFromDate:self.detailsTweet.date];
+    NSString *time = [formatterTime stringFromDate:self.detailsTweet.date];
+    NSString *date = [formatterDate stringFromDate:self.detailsTweet.date];
+    self.detailsDate.text = [NSString stringWithFormat:@"%@ • %@", time, date];
     
     // favorite count
     [self.detailsLikeCount setText:[NSString stringWithFormat:@"%d", self.detailsTweet.favoriteCount]];
     
     // retweet count
     [self.detailsRetweetCount setText:[NSString stringWithFormat:@"%d", self.detailsTweet.retweetCount]];
+    
+    // heart button should be red if liked
+    if (self.detailsTweet.favorited == YES) {
+        [self.detailsFavButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    }
+    
+    // retweet button is colored if retweeted
+    if (self.detailsTweet.retweeted == YES) {
+        [self.detailsRetweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    }
 }
 
 /*

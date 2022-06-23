@@ -99,7 +99,6 @@
 		6AD278D720BC4B950085BC29 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
-				858CB481286423DE005805D1 /* DetailsViewController.h */,
 				6AD2790320BCC01B0085BC29 /* View Controllers */,
 				6AD278FF20BCBF280085BC29 /* Views */,
 				6AD278F720BCB6900085BC29 /* API */,
@@ -150,6 +149,7 @@
 		6AD2790320BCC01B0085BC29 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				858CB481286423DE005805D1 /* DetailsViewController.h */,
 				858CB482286423DE005805D1 /* DetailsViewController.m */,
 				6AD2790420BCC0380085BC29 /* LoginViewController.h */,
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,

@@ -26,8 +26,20 @@
 
 @implementation TimelineViewController
 
-- (void)viewWillAppear {
-    [self.tableView reloadData];
+- (void)viewWillAppear:(BOOL)animated{
+    // Get timeline
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            self.arrayOfTweets = (NSMutableArray*) tweets;
+            for (Tweet *tweet in tweets) {
+                NSLog(@"%d", tweet.favoriteCount);
+            }
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)viewDidLoad {
@@ -107,6 +119,16 @@
     NSString *username = currentTweet.user.screenName;
     NSString *date = currentTweet.date.shortTimeAgoSinceNow;
     cell.usernameAndDate.text = [NSString stringWithFormat:@"%@%@ • %@", at, username, date];
+    
+    // heart button should be red if liked
+    if (currentTweet.favorited == YES) {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    }
+    
+    // retweet button is colored if retweeted
+    if (currentTweet.retweeted == YES) {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    }
     return cell;
 }
 
