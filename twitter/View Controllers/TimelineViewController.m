@@ -26,6 +26,10 @@
 
 @implementation TimelineViewController
 
+- (void)viewWillAppear {
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
