@@ -21,6 +21,12 @@ The following **core** features are completed:
 - [x] See Tweet details in a Details view
 - [x] App should render consistently all views and subviews in recent iPhone models and all orientations
 
+The following **stretch** features are implemented:
+
+**A user could**
+
+- [x] Be able to **unlike** or **un-retweet** by tapping a liked or retweeted Tweet button, respectively. (Doing so will decrement the count for each)
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Adding a comment feature
