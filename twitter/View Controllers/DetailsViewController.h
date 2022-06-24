@@ -15,13 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *detailsProfilePic;
 @property (weak, nonatomic) IBOutlet UILabel *detailsName;
 @property (weak, nonatomic) IBOutlet UILabel *detailsUsername;
-@property (weak, nonatomic) IBOutlet UILabel *detailsTweetText;
 @property (weak, nonatomic) IBOutlet UILabel *detailsDate;
 @property (weak, nonatomic) Tweet *detailsTweet;
 @property (weak, nonatomic) IBOutlet UILabel *detailsRetweetCount;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLikeCount;
 @property (weak, nonatomic) IBOutlet UIButton *detailsRetweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *detailsFavButton;
+@property (weak, nonatomic) IBOutlet UITextView *detailsTweetText;
 
 @end
 
