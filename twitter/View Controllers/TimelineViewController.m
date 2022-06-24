@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)didTapLogout:(id)sender;
-@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+@property (nonatomic, strong) NSMutableArray<Tweet *> *arrayOfTweets;
 
 @end
 
@@ -65,7 +65,7 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-//    [[APIManager shared] logout];
+    //    [[APIManager shared] logout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,11 +135,29 @@
     else {
         [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
     }
+    
+    // infinite scroll
+    if(indexPath.row + 1 == [self.arrayOfTweets count]){
+        NSString *lastID = self.arrayOfTweets[indexPath.row].idStr;
+        [[APIManager shared] getMoreHomeTimeline: lastID moreParameters:^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                NSLog(@"😎😎😎 Successfully loaded home timeline");
+                self.arrayOfTweets = (NSMutableArray*) tweets;
+                for (Tweet *tweet in tweets) {
+                    NSLog(@"%d", tweet.favoriteCount);
+                }
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            }
+        }];
+    }
+    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.arrayOfTweets.count;
 }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
