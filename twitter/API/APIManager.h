@@ -16,6 +16,8 @@
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 
+- (void)getMoreHomeTimeline:(NSString *)lastID moreParameters:(void(^)(NSArray *tweets, NSError *error))completion;
+
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
