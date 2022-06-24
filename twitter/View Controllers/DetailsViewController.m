@@ -46,15 +46,7 @@
     // retweet count
     [self.detailsRetweetCount setText:[NSString stringWithFormat:@"%d", self.detailsTweet.retweetCount]];
     
-    // heart button should be red if liked
-    if (self.detailsTweet.favorited == YES) {
-        [self.detailsFavButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
-    }
     
-    // retweet button is colored if retweeted
-    if (self.detailsTweet.retweeted == YES) {
-        [self.detailsRetweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
-    }
 }
 
 /*
@@ -79,8 +71,6 @@
                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
             }
         }];
-        // Change the image
-        [sender setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
     }
     else {
         self.detailsTweet.retweeted = NO;
@@ -94,8 +84,6 @@
                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
             }
         }];
-        // Change the image
-        [sender setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
     }
     // Update cell UI
     [self refreshData];
@@ -115,8 +103,6 @@
                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
             }
         }];
-        // Change the image
-        [sender setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
     }
     else {
         self.detailsTweet.favorited = NO;
@@ -130,8 +116,6 @@
                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
             }
         }];
-        // Change the image
-        [sender setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
     }
     // Update cell UI
     [self refreshData];
@@ -140,6 +124,18 @@
 - (void)refreshData{
     [self.detailsLikeCount setText:[NSString stringWithFormat:@"%d", self.detailsTweet.favoriteCount]];
     [self.detailsRetweetCount setText:[NSString stringWithFormat:@"%d", self.detailsTweet.retweetCount]];
+    // heart button should be red if liked
+    if (self.detailsTweet.favorited == YES) {
+        [self.detailsFavButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    }
+    
+    // retweet button is colored if retweeted
+    if (self.detailsTweet.retweeted == YES) {
+        [self.detailsRetweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.detailsRetweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+    }
 }
 
 @end

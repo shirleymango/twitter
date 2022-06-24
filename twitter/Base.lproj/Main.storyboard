@@ -346,6 +346,10 @@
                         <constraints>
                             <constraint firstItem="ivR-gf-Nqe" firstAttribute="bottom" secondItem="ugE-Ul-H9I" secondAttribute="bottom" id="8zn-e6-6Cj"/>
                             <constraint firstItem="ivR-gf-Nqe" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="AZ0-zN-Nej"/>
+                            <constraint firstItem="ivR-gf-Nqe" firstAttribute="bottom" secondItem="ugE-Ul-H9I" secondAttribute="bottom" id="LoS-2h-b1x"/>
+                            <constraint firstItem="ivR-gf-Nqe" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="QR6-Fa-zQb"/>
+                            <constraint firstItem="ivR-gf-Nqe" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="Y6o-jl-bbq"/>
+                            <constraint firstItem="ivR-gf-Nqe" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="ks5-oZ-Dgo"/>
                             <constraint firstItem="ivR-gf-Nqe" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="lYk-Ct-D3A"/>
                             <constraint firstItem="ivR-gf-Nqe" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="nDy-OC-ori"/>
                         </constraints>
@@ -379,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0A-NK-CVI">
-                                <rect key="frame" x="38" y="84" width="97" height="34"/>
+                                <rect key="frame" x="38" y="84" width="310" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>

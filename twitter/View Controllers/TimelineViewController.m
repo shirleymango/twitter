@@ -124,10 +124,16 @@
     if (currentTweet.favorited == YES) {
         [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
     }
+    else {
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+    }
     
     // retweet button is colored if retweeted
     if (currentTweet.retweeted == YES) {
         [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    }
+    else {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
     }
     return cell;
 }
